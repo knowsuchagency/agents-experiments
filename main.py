@@ -1,3 +1,8 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = ["openai-agents[litellm]", "gradio"]
+# ///
+
 import os
 import gradio as gr
 from typing import List, Dict, AsyncGenerator
