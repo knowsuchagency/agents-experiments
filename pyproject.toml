@@ -1,0 +1,10 @@
+[project]
+name = "agents-experiments"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "gradio>=5.31.0",
+    "openai-agents[litellm]>=0.0.16",
+]
