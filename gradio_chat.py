@@ -16,7 +16,7 @@ class ChatInterface:
     def create_agent(self, model_name: str, instructions: str) -> Agent:
         """Create a new agent with specified model and instructions"""
         model = LitellmModel(
-            model=model_name, api_key=os.environ.get("OPENROUTER_API_KEY", "")
+            model=model_name, api_key=os.getenv("API_KEY", "")
         )
 
         agent = Agent(
@@ -67,9 +67,16 @@ chat_interface = ChatInterface()
 
 
 async def respond(
-    message: str, history: List[Dict[str, str]], model_name: str, instructions: str
+    message: str,
+    history: List[Dict[str, str]],
+    model_name: str,
+    instructions: str,
 ):
     """Handle chat response with streaming"""
+
+    if not model_name.startswith("openrouter/"):
+        model_name = f"openrouter/{model_name}"
+
     if not message.strip():
         yield history, ""
         return

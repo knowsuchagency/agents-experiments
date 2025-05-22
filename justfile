@@ -1,2 +1,2 @@
 main:
-    uv run main.py
+    uv run gradio main.py
